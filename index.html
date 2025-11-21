@@ -1,198 +1,284 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cybersecurity Expert | Offensive Security & Digital Protection</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NoirSec — Cybersecurity & Red Team</title>
+  <meta name="description" content="NoirSec — Offensive security, penetration testing, incident response, malware analysis, and digital forensics." />
 
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap');
-
-    body {
-        margin: 0;
-        background: #050505;
-        color: #d6d6d6;
-        font-family: 'Roboto', sans-serif;
-        overflow-x: hidden;
+  <style>
+    /* Reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      background:#040306;
+      color:#dfe9ff;
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.4;
     }
 
-    /* Futuristic Grid Background */
-    .grid-bg {
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background-image: linear-gradient(#0a0a0a 1px, transparent 1px),
-                          linear-gradient(90deg, #0a0a0a 1px, transparent 1px);
-        background-size: 40px 40px;
-        opacity: 0.2;
-        z-index: -2;
-    }
+    /* layout */
+    .container{max-width:1100px;margin:0 auto;padding:28px}
 
-    /* Neon Flair Overlay */
-    .neon-overlay {
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: radial-gradient(circle at center, rgba(0,255,120,0.15), transparent 60%);
-        z-index: -1;
-    }
+    /* header + banner */
+    header{padding:28px 0;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:14px}
 
-    header {
-        text-align: center;
-        padding: 120px 20px 80px;
-    }
+    /* logo (svg) */
+    .logo{width:64px;height:64px;display:block}
+    .brand h1{font-size:1.05rem;letter-spacing:1px;color:#fff}
+    .brand p{font-size:.78rem;opacity:.8;margin-top:2px}
 
-    header h1 {
-        font-family: 'Orbitron', sans-serif;
-        font-size: 3.2rem;
-        color: #00ff9d;
-        text-shadow: 0 0 20px #00ff9d, 0 0 40px #008f56;
-        letter-spacing: 3px;
-        margin-bottom: 15px;
-    }
+    nav a{color:#bcd7ff;text-decoration:none;margin-left:18px;font-weight:600}
 
-    header p {
-        font-size: 1.2rem;
-        max-width: 780px;
-        margin: auto;
-        opacity: .85;
-    }
+    /* hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:36px 0}
+    .hero-left{padding:30px;background:linear-gradient(180deg, rgba(96,43,255,0.06), rgba(0,0,0,0.0));border-radius:12px;border:1px solid rgba(96,43,255,0.12)}
+    .kicker{display:inline-block;background:linear-gradient(90deg,#6e37ff,#00e0ff);padding:6px 10px;border-radius:999px;font-weight:700;color:#05040a;margin-bottom:12px}
+    .hero h2{font-family:'Orbitron',sans-serif;font-size:2rem;color:linear-gradient(90deg,#8a5bff,#00d6ff);margin-bottom:12px}
+    .hero h2 strong{display:block;font-size:2.2rem;color:#cfe9ff}
+    .lead{color:#aebfe8;margin-bottom:18px}
+    .cta-group{display:flex;gap:12px}
+    .btn{display:inline-block;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700;border:1px solid rgba(255,255,255,0.06)}
+    .btn-primary{background:linear-gradient(90deg,#7b45ff,#00d6ff);color:#05040a;box-shadow:0 8px 30px rgba(124,69,255,0.12)}
+    .btn-ghost{background:transparent;color:#bcd7ff;border:1px solid rgba(189,191,255,0.06)}
 
-    .btn-primary {
-        display: inline-block;
-        margin-top: 35px;
-        padding: 15px 35px;
-        background: #00ff88;
-        color: #000;
-        border-radius: 8px;
-        font-weight: bold;
-        text-decoration: none;
-        font-size: 1.2rem;
-        box-shadow: 0 0 20px #00ff88;
-        transition: 0.3s;
-    }
+    /* card right (banner) */
+    .banner{border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,0.2);box-shadow:inset 0 -60px 120px rgba(0,0,0,0.25)}
+    .banner svg{display:block;width:100%;height:100%}
 
-    .btn-primary:hover {
-        background: #00cc66;
-        box-shadow: 0 0 30px #00ff88;
-        transform: translateY(-3px);
-    }
+    /* services */
+    section.services{padding:30px 0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+    .service-card{background:linear-gradient(180deg,rgba(10,8,15,0.7),rgba(6,4,8,0.5));padding:18px;border-radius:12px;border:1px solid rgba(115,63,255,0.06)}
+    .service-card h3{font-family:'Orbitron',sans-serif;color:#9bd7ff;margin-bottom:8px}
+    .service-card p{font-size:.95rem;color:#bfcfe9}
 
-    section {
-        padding: 70px 20px;
-        text-align: center;
-    }
+    /* contact */
+    section.contact{padding:30px 0}
+    form{background:linear-gradient(180deg,rgba(6,4,8,0.6),rgba(10,8,15,0.4));padding:18px;border-radius:12px;border:1px solid rgba(115,63,255,0.08);max-width:700px}
+    label{display:block;font-size:.95rem;color:#9bd7ff;margin-bottom:6px}
+    input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(120,120,140,0.07);background:#06060a;color:#e9f2ff}
+    button[type=submit]{margin-top:8px;padding:12px;border-radius:10px;border:none;background:linear-gradient(90deg,#7b45ff,#00d6ff);font-weight:800;color:#05040a}
 
-    h2 {
-        font-family: 'Orbitron', sans-serif;
-        color: #00ff88;
-        text-shadow: 0 0 15px #00ff88;
-        font-size: 2.2rem;
-        margin-bottom: 35px;
-    }
+    footer{padding:28px 0;color:#9fb3d9;opacity:.8;text-align:center}
 
-    /* Premium Service Cards */
-    .services {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-        max-width: 1200px;
-        margin: auto;
+    /* responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      header{flex-direction:column;align-items:flex-start;gap:16px}
     }
-
-    .card {
-        background: rgba(15,15,15,0.9);
-        padding: 30px;
-        border-radius: 12px;
-        border: 1px solid #00ff88;
-        box-shadow: 0 0 25px rgba(0,255,136,0.25);
-        transition: 0.35s;
-    }
-
-    .card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 0 40px rgba(0,255,136,0.5);
-    }
-
-    .card h3 {
-        font-family: 'Orbitron', sans-serif;
-        color: #00ff88;
-        text-shadow: 0 0 10px #00ff88;
-        margin-bottom: 15px;
-    }
-
-    footer {
-        text-align: center;
-        padding: 40px;
-        font-size: .9rem;
-        opacity: .6;
-    }
-</style>
+  </style>
 </head>
-
 <body>
+  <div style="position:fixed;inset:0;z-index:-1;pointer-events:none;">
+    <!-- subtle animated background using CSS gradients -->
+    <svg width="100%" height="100%" preserveAspectRatio="none" style="display:block;opacity:.06;">
+      <defs>
+        <linearGradient id="g1" x1="0" x2="1">
+          <stop offset="0%" stop-color="#6e37ff" />
+          <stop offset="100%" stop-color="#00e0ff" />
+        </linearGradient>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#g1)"/>
+    </svg>
+  </div>
 
-<div class="grid-bg"></div>
-<div class="neon-overlay"></div>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <!-- INLINE SVG LOGO: Cyber Shield -->
+        <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="NoirSec logo">
+          <defs>
+            <linearGradient id="lg" x1="0" x2="1">
+              <stop offset="0" stop-color="#7b45ff"/>
+              <stop offset="1" stop-color="#00d6ff"/>
+            </linearGradient>
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="3" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
 
-<header>
-    <h1>CYBERSECURITY SPECIALIST</h1>
-    <p>
-        Expert in offensive security, penetration testing, incident response, malware analysis, 
-        and digital forensics. Protecting individuals, businesses, and servers from modern cyber threats.
-    </p>
-    <a href="#contact" class="btn-primary">Contact Specialist</a>
-</header>
+          <!-- Shield shape -->
+          <g transform="translate(10,4)">
+            <path d="M40 2 L80 18 L80 46 C80 70 60 86 40 96 C20 86 4 70 4 46 L4 18 Z" fill="url(#lg)" filter="url(#glow)" opacity="0.98"/>
+            <path d="M40 10 L70 23 L70 46 C70 65 55 78 40 86 C25 78 14 65 14 46 L14 23 Z" fill="#05030a" opacity="0.6"/>
 
-<section id="services">
-    <h2>Professional Services</h2>
+            <!-- circuit lines -->
+            <g stroke="#9ad8ff" stroke-width="2" stroke-linecap="round" transform="translate(22,26)">
+              <path d="M2 0 L18 0" opacity="0.9"/>
+              <circle cx="2" cy="0" r="2" fill="#00d6ff"/>
+              <circle cx="18" cy="0" r="2" fill="#8a59ff"/>
+              <path d="M10 0 L10 12"/>
+              <circle cx="10" cy="12" r="2" fill="#00d6ff"/>
+            </g>
+          </g>
+        </svg>
 
-    <div class="services">
-        <div class="card">
-            <h3>🔓 Penetration Testing</h3>
-            <p>Advanced Red Teaming: Web, API, Network, Mobile App, and Cloud Infrastructure.</p>
+        <div>
+          <h1>NoirSec</h1>
+          <p>Offensive Security • Incident Response • Digital Forensics</p>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="hero">
+        <div class="hero-left">
+          <span class="kicker">NoirSec — Elite Cyber Ops</span>
+          <h2 style="color:#e9f2ff;margin-top:10px">Modern security for modern threats
+            <strong style="font-size:28px;color:#cfe9ff">Red Teaming • Pentest • Forensics</strong>
+          </h2>
+          <p class="lead">Kami membantu perusahaan dan profesional menutup celah sebelum diserang — dari web & API testing, cloud security, hingga malware analysis dan incident response.</p>
+
+          <div class="cta-group" style="margin-top:16px">
+            <a class="btn btn-primary" href="#contact">Konsultasi Gratis</a>
+            <a class="btn btn-ghost" href="#services">Lihat Layanan</a>
+          </div>
+
+          <ul style="display:flex;gap:10px;margin-top:18px;list-style:none">
+            <li style="font-size:.92rem;color:#9bd7ff">✅ Rapid Response</li>
+            <li style="font-size:.92rem;color:#9bd7ff">✅ Certified Methodologies</li>
+            <li style="font-size:.92rem;color:#9bd7ff">✅ NDA & Forensic Reporting</li>
+          </ul>
         </div>
 
-        <div class="card">
-            <h3>🛡 Security Hardening</h3>
-            <p>Fortify OS, servers, firewalls, VPNs, and zero-trust security configuration.</p>
+        <!-- banner (SVG artwork) -->
+        <div class="banner" aria-hidden="true">
+          <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="b1" x1="0" x2="1">
+                <stop offset="0" stop-color="#7b45ff"/>
+                <stop offset="1" stop-color="#00d6ff"/>
+              </linearGradient>
+              <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="12"/>
+              </filter>
+            </defs>
+
+            <rect width="100%" height="100%" fill="#03030a" />
+            <g opacity="0.12">
+              <rect x="20" y="40" width="760" height="120" rx="12" fill="#6e37ff" filter="url(#blur)"/>
+            </g>
+
+            <!-- stylized shield and code lines -->
+            <g transform="translate(60,60)">
+              <path d="M120 10 L220 50 L220 120 C220 200 160 250 120 280 C80 250 20 200 20 120 L20 50 Z" fill="url(#b1)" opacity="0.95"/>
+              <g transform="translate(60,70)" fill="#0b0b0f" opacity="0.85">
+                <path d="M40 6 L90 31 L90 76 C90 125 60 160 40 176 C20 160 -10 125 -10 76 L-10 31 Z"/>
+              </g>
+
+              <g transform="translate(320,20)" fill="#9be8ff" opacity="0.9">
+                <rect x="0" y="0" width="320" height="12" rx="6"/>
+                <rect x="0" y="28" width="280" height="8" rx="4"/>
+                <rect x="0" y="48" width="220" height="8" rx="4"/>
+                <rect x="0" y="72" width="160" height="8" rx="4"/>
+              </g>
+            </g>
+
+            <!-- subtle matrix dots -->
+            <g opacity="0.08" fill="#00d6ff">
+              <circle cx="720" cy="320" r="2"/>
+              <circle cx="700" cy="300" r="2"/>
+              <circle cx="680" cy="340" r="2"/>
+              <circle cx="60" cy="320" r="2"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <section id="services" class="services">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <h2 style="font-family:Orbitron, sans-serif;color:#9bd7ff">Layanan NoirSec</h2>
         </div>
 
-        <div class="card">
-            <h3>🐛 Malware Analysis</h3>
-            <p>Analyze & eliminate malware, trojans, spyware, and system compromises.</p>
+        <div class="grid">
+          <div class="service-card">
+            <h3>Penetration Testing</h3>
+            <p>Web, API, Mobile, dan Cloud — full-stack pentest menggunakan metodologi industry-standard.</p>
+          </div>
+
+          <div class="service-card">
+            <h3>Red Team Engagement</h3>
+            <p>Simulasi serangan terintegrasi untuk menguji deteksi, respons, dan proses keamanan organisasi.</p>
+          </div>
+
+          <div class="service-card">
+            <h3>Incident Response & Forensics</h3>
+            <p>Investigasi insiden, pemulihan bukti digital, dan laporan forensik yang dapat dipertanggungjawabkan.</p>
+          </div>
+
+          <div class="service-card">
+            <h3>Malware Analysis</h3>
+            <p>Analisa statis & dinamis terhadap sampel berbahaya, recovery, dan mitigasi.</p>
+          </div>
+
+          <div class="service-card">
+            <h3>Secure Architecture</h3>
+            <p>Desain jaringan, hardening server, VPN, IDS/IPS, dan kebijakan zero-trust.</p>
+          </div>
+
+          <div class="service-card">
+            <h3>Konsultansi & Training</h3>
+            <p>Pembinaan tim internal, tabletop exercises, dan materi awareness berkembang.</p>
+          </div>
         </div>
+      </section>
 
-        <div class="card">
-            <h3>🔍 Digital Forensics</h3>
-            <p>Investigate hacked accounts, devices, and perform data recovery & threat tracing.</p>
-        </div>
+      <section id="contact" class="contact">
+        <h2 style="font-family:Orbitron, sans-serif;color:#9bd7ff;margin-bottom:12px">Kontak</h2>
+        <form onsubmit="handleSubmit(event)">
+          <label for="name">Nama</label>
+          <input id="name" required placeholder="Nama Anda" />
 
-        <div class="card">
-            <h3>🌐 Network Security & VPN</h3>
-            <p>Setup secure VPN, IDS/IPS, segmentation, honeypots, and secure network topology.</p>
-        </div>
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="email@domain.com" />
 
-        <div class="card">
-            <h3>📊 Cybersecurity Consultant</h3>
-            <p>Professional guidance for startups, IT teams, corporations, and organizations.</p>
-        </div>
-    </div>
-</section>
+          <label for="message">Pesan / Brief Singkat</label>
+          <textarea id="message" rows="4" placeholder="Jelaskan kebutuhan atau jadwal" required></textarea>
 
-<section id="contact">
-    <h2>Contact</h2>
-    <p>Hubungi untuk konsultasi, harga, atau penawaran layanan cybersecurity premium.</p>
+          <button type="submit">Kirim via WhatsApp</button>
+        </form>
 
-    <p style="font-size:1.3rem; margin-top:20px;">
-        📱 WhatsApp: <b>+62 8xxx-xxxx-xxxx</b><br>
-        📧 Email: <b>namaemail@domain.com</b>
-    </p>
-</section>
+        <p style="margin-top:12px;color:#9bd7ff;">Atau hubungi langsung: <strong id="phone">+62 8xx-xxxx-xxxx</strong> • <span style="opacity:.9">email@noirsec.example</span></p>
+      </section>
 
-<footer>
-    © 2025 Cybersecurity Specialist — All Rights Reserved
-</footer>
+    </main>
 
+    <footer>
+      © 2025 NoirSec — All Rights Reserved
+    </footer>
+  </div>
+
+  <script>
+    // simple handler: open WhatsApp with prefilled message
+    function handleSubmit(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('message').value.trim();
+
+      // TODO: ganti nomor ke nomor WhatsApp kamu (format internasional tanpa +)
+      const number = '628xxxxxxx';
+
+      const text = `Halo, saya ${name} (${email}).\nSaya butuh: ${msg}`;
+      const url = `https://wa.me/${number}?text=` + encodeURIComponent(text);
+      window.open(url, '_blank');
+    }
+
+    // small accessibility tweak: set phone anchor clickable
+    document.getElementById('phone').addEventListener('click', function(){
+      window.location.href = 'tel:+628xxxxxxxx';
+    });
+  </script>
 </body>
-</html>
+                    </html>
+                
