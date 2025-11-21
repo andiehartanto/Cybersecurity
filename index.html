@@ -3,8 +3,51 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NoirSec — Cybersecurity & Red Team</title>
-  <meta name="description" content="NoirSec — Offensive security, penetration testing, incident response, malware analysis, and digital forensics." />
+  <title>NoirSec — Cybersecurity & Red Team | Server Solutions</title>
+  <meta name="description" content="NoirSec — Offensive security, penetration testing, incident response, malware analysis, digital forensics, dan solusi server terpercaya." />
+  <meta name="keywords" content="cybersecurity, red team, penetration testing, server solutions, incident response, malware analysis, digital forensics" />
+  <meta name="author" content="NoirSec" />
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="NoirSec — Cybersecurity & Red Team | Server Solutions" />
+  <meta property="og:description" content="NoirSec — Offensive security, penetration testing, incident response, malware analysis, digital forensics, dan solusi server terpercaya." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://noirsec.example.com" />
+  
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "NoirSec",
+    "url": "https://noirsec.example.com",
+    "logo": "https://noirsec.example.com/logo.png",
+    "description": "Offensive security, penetration testing, incident response, malware analysis, digital forensics, dan solusi server terpercaya.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Jakarta",
+      "addressCountry": "Indonesia"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+6282121785751",
+      "contactType": "customer service",
+      "availableLanguage": "Indonesian"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/noirsec",
+      "https://twitter.com/noirsec"
+    ]
+  }
+  </script>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     /* Reset */
@@ -17,58 +60,143 @@
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       line-height:1.4;
+      overflow-x: hidden;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #040306;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(90deg, #7b45ff, #00d6ff);
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(90deg, #8a5bff, #00e0ff);
     }
 
     /* layout */
     .container{max-width:1100px;margin:0 auto;padding:28px}
+    .section-title{font-family:'Orbitron',sans-serif;color:#9bd7ff;margin-bottom:24px;font-size:1.8rem;position:relative;display:inline-block}
+    .section-title::after{content:'';position:absolute;bottom:-8px;left:0;width:60px;height:3px;background:linear-gradient(90deg,#7b45ff,#00d6ff);border-radius:2px}
 
     /* header + banner */
-    header{padding:28px 0;display:flex;align-items:center;justify-content:space-between}
+    header{padding:28px 0;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:10}
     .brand{display:flex;align-items:center;gap:14px}
 
     /* logo (svg) */
-    .logo{width:64px;height:64px;display:block}
+    .logo{width:64px;height:64px;display:block;transition:transform 0.3s ease}
+    .logo:hover{transform:scale(1.05)}
     .brand h1{font-size:1.05rem;letter-spacing:1px;color:#fff}
     .brand p{font-size:.78rem;opacity:.8;margin-top:2px}
 
-    nav a{color:#bcd7ff;text-decoration:none;margin-left:18px;font-weight:600}
+    nav a{color:#bcd7ff;text-decoration:none;margin-left:18px;font-weight:600;position:relative;transition:color 0.3s ease}
+    nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:linear-gradient(90deg,#7b45ff,#00d6ff);transition:width 0.3s ease}
+    nav a:hover{color:#fff}
+    nav a:hover::after{width:100%}
+
+    /* WhatsApp floating button */
+    .whatsapp-float{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:linear-gradient(90deg,#25D366,#128C7E);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(0,0,0,0.3);z-index:100;transition:transform 0.3s ease, box-shadow 0.3s ease}
+    .whatsapp-float:hover{transform:scale(1.1);box-shadow:0 6px 15px rgba(0,0,0,0.4)}
+    .whatsapp-float i{color:#fff;font-size:28px}
 
     /* hero */
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:36px 0}
-    .hero-left{padding:30px;background:linear-gradient(180deg, rgba(96,43,255,0.06), rgba(0,0,0,0.0));border-radius:12px;border:1px solid rgba(96,43,255,0.12)}
-    .kicker{display:inline-block;background:linear-gradient(90deg,#6e37ff,#00e0ff);padding:6px 10px;border-radius:999px;font-weight:700;color:#05040a;margin-bottom:12px}
-    .hero h2{font-family:'Orbitron',sans-serif;font-size:2rem;color:linear-gradient(90deg,#8a5bff,#00d6ff);margin-bottom:12px}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:36px 0;position:relative}
+    .hero-left{padding:30px;background:linear-gradient(180deg, rgba(96,43,255,0.06), rgba(0,0,0,0.0));border-radius:12px;border:1px solid rgba(96,43,255,0.12);position:relative;z-index:2}
+    .kicker{display:inline-block;background:linear-gradient(90deg,#6e37ff,#00e0ff);padding:6px 10px;border-radius:999px;font-weight:700;color:#05040a;margin-bottom:12px;animation:pulse 2s infinite}
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(110,55,255,0.4)}70%{box-shadow:0 0 0 10px rgba(110,55,255,0)}100%{box-shadow:0 0 0 0 rgba(110,55,255,0)}}
+    .hero h2{font-family:'Orbitron',sans-serif;font-size:2rem;color:#e9f2ff;margin-bottom:12px}
     .hero h2 strong{display:block;font-size:2.2rem;color:#cfe9ff}
     .lead{color:#aebfe8;margin-bottom:18px}
-    .cta-group{display:flex;gap:12px}
-    .btn{display:inline-block;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700;border:1px solid rgba(255,255,255,0.06)}
+    .cta-group{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-block;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700;border:1px solid rgba(255,255,255,0.06);transition:all 0.3s ease}
     .btn-primary{background:linear-gradient(90deg,#7b45ff,#00d6ff);color:#05040a;box-shadow:0 8px 30px rgba(124,69,255,0.12)}
+    .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(124,69,255,0.2)}
     .btn-ghost{background:transparent;color:#bcd7ff;border:1px solid rgba(189,191,255,0.06)}
+    .btn-ghost:hover{background:rgba(189,191,255,0.1);color:#fff}
 
     /* card right (banner) */
-    .banner{border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,0.2);box-shadow:inset 0 -60px 120px rgba(0,0,0,0.25)}
+    .banner{border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,0.2);box-shadow:inset 0 -60px 120px rgba(0,0,0,0.25);position:relative;z-index:1}
     .banner svg{display:block;width:100%;height:100%}
 
     /* services */
     section.services{padding:30px 0}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
-    .service-card{background:linear-gradient(180deg,rgba(10,8,15,0.7),rgba(6,4,8,0.5));padding:18px;border-radius:12px;border:1px solid rgba(115,63,255,0.06)}
-    .service-card h3{font-family:'Orbitron',sans-serif;color:#9bd7ff;margin-bottom:8px}
-    .service-card p{font-size:.95rem;color:#bfcfe9}
+    .service-card{background:linear-gradient(180deg,rgba(10,8,15,0.7),rgba(6,4,8,0.5));padding:18px;border-radius:12px;border:1px solid rgba(115,63,255,0.06);transition:all 0.3s ease;position:relative;overflow:hidden}
+    .service-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(90deg,rgba(123,69,255,0.1),rgba(0,214,255,0.1));opacity:0;transition:opacity 0.3s ease;z-index:0}
+    .service-card:hover{transform:translateY(-5px);border-color:rgba(115,63,255,0.2);box-shadow:0 10px 20px rgba(0,0,0,0.2)}
+    .service-card:hover::before{opacity:1}
+    .service-card h3{font-family:'Orbitron',sans-serif;color:#9bd7ff;margin-bottom:8px;position:relative;z-index:1}
+    .service-card p{font-size:.95rem;color:#bfcfe9;position:relative;z-index:1}
+    .service-card .icon{color:#7b45ff;font-size:24px;margin-bottom:10px;display:block;position:relative;z-index:1}
+
+    /* server solutions section */
+    section.server-solutions{padding:30px 0;background:linear-gradient(180deg,rgba(10,8,15,0.4),rgba(6,4,8,0.2));border-radius:12px;margin:20px 0}
+    .server-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+    .server-card{background:linear-gradient(180deg,rgba(15,12,20,0.8),rgba(8,6,12,0.6));padding:24px;border-radius:12px;border:1px solid rgba(115,63,255,0.1);transition:all 0.3s ease}
+    .server-card:hover{transform:translateY(-5px);border-color:rgba(115,63,255,0.3);box-shadow:0 10px 20px rgba(0,0,0,0.2)}
+    .server-card h3{font-family:'Orbitron',sans-serif;color:#9bd7ff;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+    .server-card h3 i{color:#00d6ff}
+    .server-card ul{list-style:none;margin-top:15px}
+    .server-card li{padding:8px 0;color:#bfcfe9;position:relative;padding-left:20px}
+    .server-card li::before{content:'✓';position:absolute;left:0;color:#00d6ff;font-weight:bold}
+    .server-card .price{font-size:1.5rem;font-weight:700;color:#fff;margin:15px 0;display:block}
+    .server-card .price span{font-size:0.8rem;color:#9bd7ff;font-weight:400}
+
+    /* testimonials */
+    section.testimonials{padding:30px 0}
+    .testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+    .testimonial-card{background:linear-gradient(180deg,rgba(10,8,15,0.7),rgba(6,4,8,0.5));padding:20px;border-radius:12px;border:1px solid rgba(115,63,255,0.06);position:relative}
+    .testimonial-card::before{content:'"';position:absolute;top:10px;left:15px;font-size:60px;color:rgba(123,69,255,0.2);font-family:Georgia,serif;line-height:1}
+    .testimonial-card p{color:#bfcfe9;margin-bottom:15px;font-style:italic;position:relative;z-index:1}
+    .testimonial-card .client{display:flex;align-items:center;gap:10px}
+    .client-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(90deg,#7b45ff,#00d6ff);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+    .client-info h4{color:#9bd7ff;font-size:0.9rem}
+    .client-info p{color:#8a9bc9;font-size:0.8rem;margin:0}
 
     /* contact */
     section.contact{padding:30px 0}
-    form{background:linear-gradient(180deg,rgba(6,4,8,0.6),rgba(10,8,15,0.4));padding:18px;border-radius:12px;border:1px solid rgba(115,63,255,0.08);max-width:700px}
+    form{background:linear-gradient(180deg,rgba(6,4,8,0.6),rgba(10,8,15,0.4));padding:24px;border-radius:12px;border:1px solid rgba(115,63,255,0.08);max-width:700px}
     label{display:block;font-size:.95rem;color:#9bd7ff;margin-bottom:6px}
-    input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(120,120,140,0.07);background:#06060a;color:#e9f2ff}
-    button[type=submit]{margin-top:8px;padding:12px;border-radius:10px;border:none;background:linear-gradient(90deg,#7b45ff,#00d6ff);font-weight:800;color:#05040a}
+    input,textarea{width:100%;padding:12px;border-radius:8px;border:1px solid rgba(120,120,140,0.07);background:#06060a;color:#e9f2ff;transition:border-color 0.3s ease}
+    input:focus,textarea:focus{outline:none;border-color:rgba(123,69,255,0.5);box-shadow:0 0 0 2px rgba(123,69,255,0.1)}
+    button[type=submit]{margin-top:12px;padding:12px 24px;border-radius:10px;border:none;background:linear-gradient(90deg,#7b45ff,#00d6ff);font-weight:800;color:#05040a;cursor:pointer;transition:all 0.3s ease}
+    button[type=submit]:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(123,69,255,0.2)}
 
-    footer{padding:28px 0;color:#9fb3d9;opacity:.8;text-align:center}
+    /* FAQ section */
+    section.faq{padding:30px 0}
+    .faq-container{max-width:800px;margin:0 auto}
+    .faq-item{background:linear-gradient(180deg,rgba(10,8,15,0.7),rgba(6,4,8,0.5));border-radius:12px;border:1px solid rgba(115,63,255,0.06);margin-bottom:15px;overflow:hidden}
+    .faq-question{padding:18px 24px;color:#9bd7ff;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background 0.3s ease}
+    .faq-question:hover{background:rgba(115,63,255,0.1)}
+    .faq-question i{transition:transform 0.3s ease}
+    .faq-answer{padding:0 24px;max-height:0;overflow:hidden;color:#bfcfe9;transition:max-height 0.3s ease, padding 0.3s ease}
+    .faq-item.active .faq-answer{max-height:300px;padding:0 24px 18px}
+    .faq-item.active .faq-question i{transform:rotate(180deg)}
+
+    footer{padding:28px 0;color:#9fb3d9;opacity:.8;text-align:center;border-top:1px solid rgba(115,63,255,0.1);margin-top:30px}
+    .footer-content{display:flex;flex-direction:column;align-items:center;gap:15px}
+    .social-links{display:flex;gap:15px}
+    .social-links a{color:#9bd7ff;font-size:18px;transition:color 0.3s ease}
+    .social-links a:hover{color:#00d6ff}
 
     /* responsive */
     @media (max-width:900px){
       .hero{grid-template-columns:1fr;}
       header{flex-direction:column;align-items:flex-start;gap:16px}
+      .server-grid{grid-template-columns:1fr;}
+    }
+    
+    @media (max-width:600px){
+      .container{padding:20px}
+      .hero-left{padding:20px}
+      .hero h2{font-size:1.8rem}
+      .hero h2 strong{font-size:2rem}
+      .cta-group{flex-direction:column;width:100%}
+      .btn{width:100%;text-align:center}
     }
   </style>
 </head>
@@ -85,6 +213,11 @@
       <rect width="100%" height="100%" fill="url(#g1)"/>
     </svg>
   </div>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/6282121785751" class="whatsapp-float" target="_blank" aria-label="Hubungi kami via WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
   <div class="container">
     <header>
@@ -120,12 +253,15 @@
 
         <div>
           <h1>NoirSec</h1>
-          <p>Offensive Security • Incident Response • Digital Forensics</p>
+          <p>Offensive Security • Server Solutions • Digital Forensics</p>
         </div>
       </div>
 
       <nav>
         <a href="#services">Services</a>
+        <a href="#server-solutions">Server</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
@@ -135,19 +271,20 @@
         <div class="hero-left">
           <span class="kicker">NoirSec — Elite Cyber Ops</span>
           <h2 style="color:#e9f2ff;margin-top:10px">Modern security for modern threats
-            <strong style="font-size:28px;color:#cfe9ff">Red Teaming • Pentest • Forensics</strong>
+            <strong style="font-size:28px;color:#cfe9ff">Red Teaming • Pentest • Server Solutions</strong>
           </h2>
-          <p class="lead">Kami membantu perusahaan dan profesional menutup celah sebelum diserang — dari web & API testing, cloud security, hingga malware analysis dan incident response.</p>
+          <p class="lead">Kami membantu perusahaan dan profesional menutup celah sebelum diserang — dari web & API testing, cloud security, hingga malware analysis, incident response, dan solusi server terpercaya.</p>
 
           <div class="cta-group" style="margin-top:16px">
             <a class="btn btn-primary" href="#contact">Konsultasi Gratis</a>
             <a class="btn btn-ghost" href="#services">Lihat Layanan</a>
           </div>
 
-          <ul style="display:flex;gap:10px;margin-top:18px;list-style:none">
+          <ul style="display:flex;gap:10px;margin-top:18px;list-style:none;flex-wrap:wrap">
             <li style="font-size:.92rem;color:#9bd7ff">✅ Rapid Response</li>
             <li style="font-size:.92rem;color:#9bd7ff">✅ Certified Methodologies</li>
             <li style="font-size:.92rem;color:#9bd7ff">✅ NDA & Forensic Reporting</li>
+            <li style="font-size:.92rem;color:#9bd7ff">✅ 24/7 Server Monitoring</li>
           </ul>
         </div>
 
@@ -196,45 +333,191 @@
       </div>
 
       <section id="services" class="services">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-          <h2 style="font-family:Orbitron, sans-serif;color:#9bd7ff">Layanan NoirSec</h2>
-        </div>
+        <h2 class="section-title">Layanan NoirSec</h2>
 
         <div class="grid">
           <div class="service-card">
+            <i class="fas fa-shield-alt icon"></i>
             <h3>Penetration Testing</h3>
             <p>Web, API, Mobile, dan Cloud — full-stack pentest menggunakan metodologi industry-standard.</p>
           </div>
 
           <div class="service-card">
+            <i class="fas fa-user-secret icon"></i>
             <h3>Red Team Engagement</h3>
             <p>Simulasi serangan terintegrasi untuk menguji deteksi, respons, dan proses keamanan organisasi.</p>
           </div>
 
           <div class="service-card">
+            <i class="fas fa-search icon"></i>
             <h3>Incident Response & Forensics</h3>
             <p>Investigasi insiden, pemulihan bukti digital, dan laporan forensik yang dapat dipertanggungjawabkan.</p>
           </div>
 
           <div class="service-card">
+            <i class="fas fa-virus icon"></i>
             <h3>Malware Analysis</h3>
             <p>Analisa statis & dinamis terhadap sampel berbahaya, recovery, dan mitigasi.</p>
           </div>
 
           <div class="service-card">
+            <i class="fas fa-lock icon"></i>
             <h3>Secure Architecture</h3>
             <p>Desain jaringan, hardening server, VPN, IDS/IPS, dan kebijakan zero-trust.</p>
           </div>
 
           <div class="service-card">
+            <i class="fas fa-chalkboard-teacher icon"></i>
             <h3>Konsultansi & Training</h3>
             <p>Pembinaan tim internal, tabletop exercises, dan materi awareness berkembang.</p>
           </div>
         </div>
       </section>
 
+      <!-- Server Solutions Section -->
+      <section id="server-solutions" class="server-solutions">
+        <h2 class="section-title">Solusi Server</h2>
+        
+        <div class="server-grid">
+          <div class="server-card">
+            <h3><i class="fas fa-server"></i> Basic Server</h3>
+            <p>Solusi server ideal untuk bisnis kecil dan startup yang membutuhkan keandalan tinggi dengan biaya terjangkau.</p>
+            <ul>
+              <li>2 vCPU Cores</li>
+              <li>4GB RAM</li>
+              <li>80GB SSD Storage</li>
+              <li>1TB Bandwidth</li>
+              <li>Basic DDoS Protection</li>
+              <li>24/7 Monitoring</li>
+            </ul>
+            <span class="price">Rp 500.000 <span>/ bulan</span></span>
+            <a href="#contact" class="btn btn-primary" style="width:100%;text-align:center">Pilih Paket</a>
+          </div>
+          
+          <div class="server-card">
+            <h3><i class="fas fa-network-wired"></i> Business Server</h3>
+            <p>Server berkinerja tinggi untuk bisnis menengah dengan traffic tinggi dan kebutuhan keamanan data yang ketat.</p>
+            <ul>
+              <li>4 vCPU Cores</li>
+              <li>8GB RAM</li>
+              <li>160GB SSD Storage</li>
+              <li>2TB Bandwidth</li>
+              <li>Advanced DDoS Protection</li>
+              <li>24/7 Monitoring & Support</li>
+              <li>Backup Harian</li>
+            </ul>
+            <span class="price">Rp 1.200.000 <span>/ bulan</span></span>
+            <a href="#contact" class="btn btn-primary" style="width:100%;text-align:center">Pilih Paket</a>
+          </div>
+          
+          <div class="server-card">
+            <h3><i class="fas fa-shield-virus"></i> Enterprise Server</h3>
+            <p>Solusi server enterprise dengan keamanan maksimal, performa tinggi, dan dukungan khusus untuk kebutuhan kritis.</p>
+            <ul>
+              <li>8 vCPU Cores</li>
+              <li>16GB RAM</li>
+              <li>320GB SSD Storage</li>
+              <li>5TB Bandwidth</li>
+              <li>Premium DDoS Protection</li>
+              <li>24/7 Dedicated Support</li>
+              <li>Real-time Backup & Recovery</li>
+              <li>Security Hardening</li>
+            </ul>
+            <span class="price">Rp 2.500.000 <span>/ bulan</span></span>
+            <a href="#contact" class="btn btn-primary" style="width:100%;text-align:center">Pilih Paket</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials Section -->
+      <section id="testimonials" class="testimonials">
+        <h2 class="section-title">Apa Kata Klien Kami</h2>
+        
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <p>"NoirSec telah membantu perusahaan kami mengidentifikasi celah keamanan kritis yang tidak terdeteksi oleh tim internal. Respons cepat dan laporan yang sangat detail."</p>
+            <div class="client">
+              <div class="client-avatar">AK</div>
+              <div class="client-info">
+                <h4>Ahmad Kurniawan</h4>
+                <p>CTO, Fintech Company</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-card">
+            <p>"Server solutions dari NoirSec sangat stabil dan aman. Downtime hampir nol dan tim support selalu siap membantu 24/7. Highly recommended!"</p>
+            <div class="client">
+              <div class="client-avatar">SL</div>
+              <div class="client-info">
+                <h4>Siti Lestari</h4>
+                <p>IT Manager, E-commerce Platform</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-card">
+            <p>"Setelah mengalami serangan ransomware, NoirSec membantu kami melakukan forensik digital dan recovery dengan sangat profesional. Proses cepat dan dokumentasi lengkap."</p>
+            <div class="client">
+              <div class="client-avatar">BD</div>
+              <div class="client-info">
+                <h4>Budi Darmawan</h4>
+                <p>CEO, Manufacturing Company</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section id="faq" class="faq">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Apa saja metode pembayaran yang tersedia?</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Kami menerima berbagai metode pembayaran termasuk transfer bank, kartu kredit, dan pembayaran digital seperti GoPay, OVO, dan DANA. Untuk kontrak enterprise, kami juga menyediakan opsi pembayaran dengan invoice bulanan.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Bagaimana dengan keamanan data saya?</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Keamanan data adalah prioritas utama kami. Semua server dilengkapi dengan enkripsi tingkat enterprise, firewall canggih, dan sistem deteksi intrusi. Kami juga menawarkan NDA (Non-Disclosure Agreement) untuk semua proyek yang membutuhkan kerahasiaan tinggi.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Apakah tersedia layanan custom untuk kebutuhan spesifik?</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Ya, kami menyediakan layanan custom yang dapat disesuaikan dengan kebutuhan spesifik perusahaan Anda. Tim kami akan melakukan konsultasi awal untuk memahami kebutuhan Anda dan merancang solusi yang paling tepat.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Bagaimana proses onboarding untuk layanan server?</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Proses onboarding kami dirancang untuk cepat dan mudah. Setelah konfirmasi pembayaran, tim kami akan menghubungi Anda dalam 1x24 jam untuk proses setup. Server Anda akan siap digunakan dalam waktu maksimal 48 jam, tergantung pada kompleksitas konfigurasi yang dibutuhkan.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="contact" class="contact">
-        <h2 style="font-family:Orbitron, sans-serif;color:#9bd7ff;margin-bottom:12px">Kontak</h2>
+        <h2 class="section-title">Kontak</h2>
         <form onsubmit="handleSubmit(event)">
           <label for="name">Nama</label>
           <input id="name" required placeholder="Nama Anda" />
@@ -242,43 +525,126 @@
           <label for="email">Email</label>
           <input id="email" type="email" placeholder="email@domain.com" />
 
+          <label for="service">Layanan yang Dibutuhkan</label>
+          <select id="service" style="width:100%;padding:12px;border-radius:8px;border:1px solid rgba(120,120,140,0.07);background:#06060a;color:#e9f2ff;margin-bottom:10px">
+            <option value="">Pilih Layanan</option>
+            <option value="Penetration Testing">Penetration Testing</option>
+            <option value="Red Team Engagement">Red Team Engagement</option>
+            <option value="Incident Response & Forensics">Incident Response & Forensics</option>
+            <option value="Malware Analysis">Malware Analysis</option>
+            <option value="Secure Architecture">Secure Architecture</option>
+            <option value="Basic Server">Basic Server</option>
+            <option value="Business Server">Business Server</option>
+            <option value="Enterprise Server">Enterprise Server</option>
+            <option value="Konsultansi & Training">Konsultansi & Training</option>
+          </select>
+
           <label for="message">Pesan / Brief Singkat</label>
           <textarea id="message" rows="4" placeholder="Jelaskan kebutuhan atau jadwal" required></textarea>
 
           <button type="submit">Kirim via WhatsApp</button>
         </form>
 
-        <p style="margin-top:12px;color:#9bd7ff;">Atau hubungi langsung: <strong id="phone">+62 8xx-xxxx-xxxx</strong> • <span style="opacity:.9">email@noirsec.example</span></p>
+        <p style="margin-top:20px;color:#9bd7ff;text-align:center">
+          Atau hubungi langsung: 
+          <a href="tel:+6282121785751" style="color:#00d6ff;text-decoration:none;font-weight:600">+62 821-2178-5751</a> • 
+          <a href="mailto:info@noirsec.example" style="color:#00d6ff;text-decoration:none">info@noirsec.example</a>
+        </p>
       </section>
 
     </main>
 
     <footer>
-      © 2025 NoirSec — All Rights Reserved
+      <div class="footer-content">
+        <p>© 2025 NoirSec — All Rights Reserved</p>
+        <div class="social-links">
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
     </footer>
   </div>
 
   <script>
-    // simple handler: open WhatsApp with prefilled message
+    // WhatsApp handler with the provided number
     function handleSubmit(e){
       e.preventDefault();
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
+      const service = document.getElementById('service').value;
       const msg = document.getElementById('message').value.trim();
 
-      // TODO: ganti nomor ke nomor WhatsApp kamu (format internasional tanpa +)
+      // Using the provided WhatsApp number
       const number = '6282121785751';
 
-      const text = `Halo, saya ${name} (${email}).\nSaya butuh: ${msg}`;
+      let text = `Halo, saya ${name} (${email}).\n`;
+      
+      if (service) {
+        text += `Saya tertarik dengan layanan: ${service}.\n`;
+      }
+      
+      text += `Pesan: ${msg}`;
+
       const url = `https://wa.me/${number}?text=` + encodeURIComponent(text);
       window.open(url, '_blank');
     }
 
-    // small accessibility tweak: set phone anchor clickable
-    document.getElementById('phone').addEventListener('click', function(){
-      window.location.href = 'tel:+628xxxxxxxx';
+    // FAQ accordion functionality
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const faqItem = question.parentElement;
+        const isActive = faqItem.classList.contains('active');
+        
+        // Close all FAQ items
+        document.querySelectorAll('.faq-item').forEach(item => {
+          item.classList.remove('active');
+        });
+        
+        // Open clicked item if it wasn't active
+        if (!isActive) {
+          faqItem.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 20,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Add animation on scroll
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all service cards, server cards, and testimonial cards
+    document.querySelectorAll('.service-card, .server-card, .testimonial-card').forEach(card => {
+      card.style.opacity = 0;
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(card);
     });
   </script>
 </body>
-                    </html>
-                
+</html>
